@@ -1039,18 +1039,19 @@
             background: var(--black-rich);
             border-top: 1px solid rgba(184, 134, 11, 0.2);
             overflow: hidden;
+            width: 100%;
         }
         
         .sponsors-marquee {
             display: flex;
-            animation: sponsors-scroll 15s linear infinite;
+            width: max-content;
+            animation: sponsors-scroll 20s linear infinite;
         }
         
         .sponsors-content {
             display: flex;
             align-items: center;
             gap: 64px;
-            flex-shrink: 0;
             padding-right: 64px;
         }
         
@@ -1065,6 +1066,11 @@
         .sponsor-logo:hover {
             opacity: 1;
             filter: grayscale(0%);
+        }
+        
+        @keyframes sponsors-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
         /* Footer */
         footer {
