@@ -584,6 +584,14 @@
             align-items: center;
             justify-content: center;
             transition: border-color 0.3s ease;
+            overflow: hidden;
+        }
+
+        .coach-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
         }
 
         .coach-card:hover .coach-image {
@@ -1407,7 +1415,7 @@
             </div>
             <div class="coaches-grid">
                 <div class="coach-card">
-                    <div class="coach-image"><span class="coach-number">01</span><img src="headshot-julian.jpg" alt="Julian Cortez" style="width:100%;height:100%;object-fit:cover;"></div>
+                    <div class="coach-image"><span class="coach-number">01</span><img src="headshot-julian.jpg" alt="Julian Cortez"></div>
                     <h3 class="coach-name">Julian Cortez</h3>
                     <p class="coach-role">Owner & Head Coach</p>
                     <p class="coach-bio">Professional boxer with over 40 amateur fights in Mexico. Julian has developed numerous amateur national champions and brings that championship pedigree to every session.</p>
