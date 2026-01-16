@@ -419,9 +419,9 @@
     font-size: clamp(24px, 5vw, 36px);
     font-weight: 800;
     letter-spacing: -0.01em;
+    line-height: 1.3;
 
-    line-height: 1.25; /* ← THIS is the fix */
-    display: block;    /* ← NOT inline-block */
+    padding-bottom: 0.12em; /* ← THE REAL FIX */
 }
 
 
@@ -1296,22 +1296,16 @@
                 order: -1;
             }
 
-            .section-title {
+          .section-title {
     font-family: 'Syne', sans-serif;
     font-size: clamp(24px, 5vw, 36px);
     font-weight: 800;
     letter-spacing: -0.01em;
+    line-height: 1.3;
 
-    line-height: 1.25; /* ← THIS is the fix */
-    display: block;    /* ← NOT inline-block */
+    padding-bottom: 0.12em; /* ← THE REAL FIX */
 }
 
-
-        .section-title::after {
-            content: "";
-            display: block;
-            height: 0.01px;
-        }
 
 
 
