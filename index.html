@@ -52,37 +52,6 @@
             padding: 0 24px;
         }
 
-        /* Preloader - COMMENTED OUT BUT KEPT FOR LATER */
-        .preloader {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .preloader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .preloader-text {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 0.4em;
-            color: var(--gold);
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
-        }
-
         /* Navigation */
         nav {
             position: fixed;
@@ -607,6 +576,7 @@
             font-weight: 600;
             letter-spacing: 0.1em;
             color: var(--gold);
+            z-index: 1;
         }
 
         .coach-name {
@@ -1318,8 +1288,6 @@
     </style>
 </head>
 <body>
-    <!-- PRELOADER COMMENTED OUT - Uncomment the line below to re-enable -->
-    <!-- <div class="preloader"><span class="preloader-text">NBC</span></div> -->
 
     <nav>
         <img src="NBC_Primary_Logo_3.svg" alt="Nashville Boxing Club" class="nav-logo">
@@ -1338,7 +1306,7 @@
         <div class="menu-footer">
             <div class="menu-contact">
                 <p>Get in touch</p>
-                <a href="/cdn-cgi/l/email-protection#f0999e969fb09e91839886999c9c95929f88999e97939c8592de939f9d"><span class="__cf_email__" data-cfemail="94fdfaf2fbd4faf5e7fce2fdf8f8f1f6fbecfdfaf3f7f8e1f6baf7fbf9">[email&#160;protected]</span></a>
+                <a href="mailto:info@nashvilleboxingclub.com">info@nashvilleboxingclub.com</a>
             </div>
             <div class="menu-social">
                 <a href="#">Instagram</a>
@@ -1541,7 +1509,7 @@
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                    <div><p class="contact-label">Email</p><p class="contact-value"><a href="/cdn-cgi/l/email-protection#234a4d454c634d42504b554a4f4f46414c5b4a4d44404f56410d404c4e"><span class="__cf_email__" data-cfemail="7f161119103f111e0c17091613131a1d10071611181c130a1d511c1012">[email&#160;protected]</span></a></p></div>
+                    <div><p class="contact-label">Email</p><p class="contact-value"><a href="mailto:info@nashvilleboxingclub.com">info@nashvilleboxingclub.com</a></p></div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.35a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.75.34 1.54.57 2.35.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -1580,20 +1548,18 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // PRELOADER CODE - Currently disabled since preloader HTML is commented out
-        // To re-enable: uncomment the preloader div in HTML above, then uncomment the code below
-        /*
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                const preloader = document.querySelector('.preloader');
-                if (preloader) preloader.classList.add('hidden');
-            }, 1000);
-        });
-        */
-
+    <script>
+        // Menu toggle
         const menuBtn = document.querySelector('.nav-menu-btn');
         const menuOverlay = document.querySelector('.menu-overlay');
+        
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking a link
         document.querySelectorAll('[data-menu-link]').forEach(link => {
             link.addEventListener('click', () => {
                 menuBtn.classList.remove('active');
@@ -1601,18 +1567,44 @@
                 document.body.style.overflow = '';
             });
         });
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = menuOverlay.classList.contains('active') ? 'hidden' : '';
-        });
 
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
                 e.preventDefault();
-                document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
-        const obs = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }});
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Make hero visible immediately
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'translateY(0)';
+    </script>
+</body>
+</html>
