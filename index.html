@@ -415,15 +415,15 @@
         }
 
        .section-title {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(24px, 5vw, 36px);
-            font-weight: 800;
-            letter-spacing: -0.01em;
-            line-height: 1.15;
-        
-            display: inline-block;
-            padding-bottom: 0.25em;
-        }
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+
+    line-height: 1.25; /* ← THIS is the fix */
+    display: block;    /* ← NOT inline-block */
+}
+
 
 
         .section-subtitle {
@@ -1297,15 +1297,15 @@
             }
 
             .section-title {
-                font-family: 'Syne', sans-serif;
-                font-size: clamp(24px, 5vw, 36px);
-                font-weight: 800;
-                letter-spacing: -0.01em;
-            
-                line-height: 1.15;
-                display: inline-block;
-                padding-bottom: 0.25em;
-            }
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+
+    line-height: 1.25; /* ← THIS is the fix */
+    display: block;    /* ← NOT inline-block */
+}
+
 
         .section-title::after {
             content: "";
