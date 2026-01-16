@@ -1028,6 +1028,40 @@
             background: var(--gold-light);
         }
 
+
+        /* Sponsors */
+        .sponsors-section {
+            padding: 32px 0;
+            background: var(--black-rich);
+            border-top: 1px solid rgba(184, 134, 11, 0.2);
+            overflow: hidden;
+        }
+        
+        .sponsors-marquee {
+            display: flex;
+            animation: marquee 15s linear infinite;
+        }
+        
+        .sponsors-content {
+            display: flex;
+            align-items: center;
+            gap: 64px;
+            flex-shrink: 0;
+            padding-right: 64px;
+        }
+        
+        .sponsor-logo {
+            height: 40px;
+            width: auto;
+            opacity: 0.5;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-logo:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
         /* Footer */
         footer {
             background: var(--black);
@@ -1531,6 +1565,23 @@
         </div>
     </section>
 
+    <div class="sponsors-section">
+    <div class="sponsors-marquee">
+        <div class="sponsors-content">
+            <img src="sponsor1.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor2.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor3.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor4.png" alt="Sponsor" class="sponsor-logo">
+        </div>
+        <div class="sponsors-content">
+            <img src="sponsor1.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor2.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor3.png" alt="Sponsor" class="sponsor-logo">
+            <img src="sponsor4.png" alt="Sponsor" class="sponsor-logo">
+        </div>
+    </div>
+    </div>
+    
     <footer>
         <div class="footer-content">
             <div class="footer-top">
