@@ -1033,45 +1033,65 @@
         }
 
 
-        /* Sponsors */
-        .sponsors-section {
-            padding: 32px 0;
-            background: var(--black-rich);
-            border-top: 1px solid rgba(184, 134, 11, 0.2);
-            overflow: hidden;
-            width: 100%;
-        }
+       /* Sponsors */
+.sponsors-section {
+    padding: 32px 0;
+    background: var(--black-rich);
+    border-top: 1px solid rgba(184, 134, 11, 0.2);
+    overflow: hidden;
+}
+
+.sponsors-marquee {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+}
+
+.sponsors-content {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+}
+
+.sponsors-content:nth-child(2) {
+    display: none;
+}
+
+.sponsor-logo {
+    height: 40px;
+    width: auto;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+@media (max-width: 600px) {
+    .sponsors-marquee {
+        justify-content: flex-start;
+        animation: sponsors-scroll 15s linear infinite;
+        width: max-content;
+    }
+    
+    .sponsors-content:nth-child(2) {
+        display: flex;
+    }
+    
+    .sponsors-content {
+        padding-right: 64px;
+    }
+}
+
+@keyframes sponsors-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
         
-        .sponsors-marquee {
-            display: flex;
-            width: max-content;
-            animation: sponsors-scroll 20s linear infinite;
-        }
-        
-        .sponsors-content {
-            display: flex;
-            align-items: center;
-            gap: 64px;
-            padding-right: 64px;
-        }
-        
-        .sponsor-logo {
-            height: 40px;
-            width: auto;
-            opacity: 0.5;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-        
-        .sponsor-logo:hover {
-            opacity: 1;
-            filter: grayscale(0%);
-        }
-        
-        @keyframes sponsors-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
         /* Footer */
         footer {
             background: var(--black);
