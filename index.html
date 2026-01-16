@@ -271,6 +271,10 @@
             from { opacity: 0; transform: translateY(16px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes sponsors-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
         .hero-cta {
             margin-top: 32px;
@@ -1039,7 +1043,7 @@
         
         .sponsors-marquee {
             display: flex;
-            animation: marquee 15s linear infinite;
+            animation: sponsors-scroll 15s linear infinite;
         }
         
         .sponsors-content {
